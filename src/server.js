@@ -13,7 +13,7 @@ const tasks = [
 
 app.get("/", (req, res) => {
   res.json({
-    message: "API rodando com sucesso!"
+    message: "API v1.0.1 rodando com sucesso!"
   });
 });
 

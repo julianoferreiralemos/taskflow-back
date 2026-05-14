@@ -1,0 +1,21 @@
+name: Deploy Render
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy Render
+        run: |
+          curl -X POST \
+          https://api.render.com/v1/services/${{ secrets.SERVICE_ID }}/deploys \
+          -H 'Accept: application/json' \
+          -H 'Authorization: Bearer ${{ secrets.RENDER_API_KEY }}'
